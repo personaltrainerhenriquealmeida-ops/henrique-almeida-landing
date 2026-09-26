@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+/* Design system do Henrique Almeida (referencias/pl 1.jpeg) */
+@theme {
+  --color-brand: #e85002;
+  --color-ink: #000000;
+  --color-graphite: #333333;
+  --color-steel: #646464;
+  --color-ash: #a7a7a7;
+  --color-snow: #f9f9f9;
+
+  /* Ordem conforme aparece na imagem: bege → laranja → vermelho → preto */
+  --background-image-brand-gradient: linear-gradient(
+    90deg,
+    #d9c3ab 0%,
+    #f16001 35%,
+    #c10801 65%,
+    #000000 100%
+  );
+
+  --font-display: var(--font-anton);
+  --font-sans: var(--font-inter);
+}
+
+body {
+  background: var(--color-ink);
+  color: var(--color-snow);
+}
