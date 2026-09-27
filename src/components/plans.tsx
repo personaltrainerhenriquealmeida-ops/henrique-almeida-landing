@@ -55,11 +55,11 @@ export function Plans() {
               <div className="relative h-48 w-full bg-brand-gradient">
                 {image ? (
                   <Image
-                    src={image}
-                    alt=""
+                    src={image.src}
+                    alt={image.alt}
                     fill
                     sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover object-[50%_30%]"
+                    className={`object-cover ${image.position}`}
                   />
                 ) : (
                   <Icon className="absolute left-1/2 top-1/2 size-12 -translate-x-1/2 -translate-y-1/2 text-snow/50" />

@@ -64,13 +64,14 @@ antes de lançar. Ainda faltam: logo, WhatsApp/checkout e fotos definitivas.
 
 ## Imagens
 
-- Hero e o card "Performance" usam fotos do Instagram do próprio Henrique
+- Hero e os três cards de plano usam fotos do Instagram do próprio Henrique
   (`src/assets/images`). Fotos de reels vêm com texto por cima; por isso só duas
   serviram.
-- Os cards "Essencial" e "Premium" e o fundo da faixa de CTA estão como espaço
-  reservado (gradiente da marca): as imagens geradas no Magnific foram
-  bloqueadas por limite de uso da ferramenta. Para preencher, coloque o arquivo
-  em `src/assets/images` e importe em `src/content/images.ts`.
+- Só fotos do próprio Henrique: não usar fotos de alunas sem autorização delas
+  (direito de imagem/LGPD). O fundo da faixa de CTA segue como espaço reservado:
+  a geração de imagens no Magnific foi bloqueada por limite de uso da
+  ferramenta. Para trocar qualquer foto, coloque o arquivo em
+  `src/assets/images` e ajuste `src/content/images.ts`.
 - A prova social do hero (seguidores e foto do perfil) vem da própria API do
   Instagram, não é texto fixo.
 
