@@ -1,0 +1,54 @@
+name: Publicar no GitHub Pages
+
+on:
+  push:
+    branches: [main, "feat/**"]
+  # Rebuild de hora em hora para atualizar o feed do Instagram (roda na branch padrão).
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# A publicação mais recente vence; as anteriores em andamento são canceladas.
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    # Inativo até o Pages ser habilitado: defina a variável PAGES_ENABLED=true no repositório.
+    if: ${{ vars.PAGES_ENABLED == 'true' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run build
+        env:
+          GITHUB_PAGES: "true"
+          # Sem o secret, o site sai normalmente e a seção do Instagram mostra o fallback.
+          INSTAGRAM_ACCESS_TOKEN: ${{ secrets.INSTAGRAM_ACCESS_TOKEN }}
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
