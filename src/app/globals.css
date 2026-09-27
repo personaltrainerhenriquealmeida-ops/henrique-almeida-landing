@@ -20,6 +20,7 @@
 
   --font-display: var(--font-anton);
   --font-sans: var(--font-inter);
+  --font-script: var(--font-kaushan);
 }
 
 html {
@@ -27,6 +28,6 @@ html {
 }
 
 body {
-  background: var(--color-ink);
-  color: var(--color-snow);
+  background: var(--color-snow);
+  color: var(--color-ink);
 }

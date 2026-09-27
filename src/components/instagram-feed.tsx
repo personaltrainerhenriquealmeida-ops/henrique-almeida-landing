@@ -7,13 +7,13 @@ export async function InstagramFeed({ limit = 8 }: { limit?: number }) {
 
   if (posts.length === 0) {
     return (
-      <div className="rounded-3xl border border-white/10 bg-graphite/40 p-10 text-center">
-        <p className="text-ash">As últimas publicações aparecem aqui.</p>
+      <div className="rounded-xl border border-ink/10 bg-white p-10 text-center shadow-sm">
+        <p className="text-steel">As últimas publicações aparecem aqui.</p>
         <a
           href={site.instagram.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="mt-5 inline-block rounded-full bg-brand px-6 py-3 font-semibold text-ink transition-colors hover:bg-snow"
+          className="mt-5 inline-block rounded-md bg-ink px-6 py-3 text-[12px] font-semibold uppercase tracking-[0.12em] text-snow transition-colors hover:bg-brand hover:text-ink"
         >
           Ver @{site.instagram.handle}
         </a>
@@ -29,7 +29,7 @@ export async function InstagramFeed({ limit = 8 }: { limit?: number }) {
             href={post.permalink}
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative block aspect-square overflow-hidden rounded-2xl bg-graphite"
+            className="group relative block aspect-[4/5] overflow-hidden rounded-xl bg-graphite"
           >
             <Image
               src={post.imageUrl}

@@ -15,6 +15,14 @@ export type InstagramMediaResponse = {
   data: InstagramMedia[];
 };
 
+/** Perfil retornado por GET /me. */
+export type InstagramProfile = {
+  username: string;
+  followersCount: number;
+  mediaCount: number;
+  profilePictureUrl?: string;
+};
+
 /** Post já normalizado para uso na UI. */
 export type InstagramPost = {
   id: string;

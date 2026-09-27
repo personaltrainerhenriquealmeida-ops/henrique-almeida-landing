@@ -2,6 +2,7 @@ import type {
   InstagramMedia,
   InstagramMediaResponse,
   InstagramPost,
+  InstagramProfile,
 } from "./types";
 
 const API_URL = "https://graph.instagram.com";
@@ -58,5 +59,44 @@ export async function getLatestPosts(limit = 8): Promise<InstagramPost[]> {
   } catch (error) {
     console.error("Falha ao consultar a Instagram API", error);
     return [];
+  }
+}
+
+/**
+ * Seguidores, número de posts e foto do perfil. Mesmas regras de
+ * getLatestPosts: só no servidor e nunca derruba a página (devolve null).
+ */
+export async function getProfile(): Promise<InstagramProfile | null> {
+  const token = process.env.INSTAGRAM_ACCESS_TOKEN;
+  if (!token) return null;
+
+  const url = new URL(`${API_URL}/me`);
+  url.searchParams.set(
+    "fields",
+    "username,followers_count,media_count,profile_picture_url",
+  );
+  url.searchParams.set("access_token", token);
+
+  try {
+    const res = await fetch(url, {
+      next: {
+        revalidate: INSTAGRAM_REVALIDATE_SECONDS,
+        tags: [INSTAGRAM_CACHE_TAG],
+      },
+    });
+    if (!res.ok) {
+      console.error(`Instagram API (perfil) respondeu ${res.status}`);
+      return null;
+    }
+    const data = await res.json();
+    return {
+      username: data.username,
+      followersCount: data.followers_count ?? 0,
+      mediaCount: data.media_count ?? 0,
+      profilePictureUrl: data.profile_picture_url,
+    };
+  } catch (error) {
+    console.error("Falha ao consultar o perfil do Instagram", error);
+    return null;
   }
 }
