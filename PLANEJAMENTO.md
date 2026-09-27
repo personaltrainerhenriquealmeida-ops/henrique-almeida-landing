@@ -113,7 +113,7 @@ Planejamento (nenhum desenvolvimento iniciado).
 
 1. **Planos:** quantos, nomes, preços e benefícios? Recorrência (mensal, trimestral, semestral)? Presencial e online?
 2. **Como assina:** pagamento online direto (qual plataforma?) ou botão abre WhatsApp?
-3. **Instagram:** qual o @? É conta Profissional? O Henrique consegue aceitar o convite de testador?
+3. **Instagram:** ~~qual o @, é Profissional?~~ Respondido: [@personalhenriquealmeida](https://www.instagram.com/personalhenriquealmeida/), conta Profissional. Falta o Henrique aceitar o convite de testador.
 4. **Assets:** logo em vetor, fotos profissionais do Henrique, depoimentos e resultados reais.
 5. **Tipografia:** existe fonte oficial na marca?
 6. **Domínio e hospedagem:** já existe domínio? Quem paga a hospedagem?
