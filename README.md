@@ -19,6 +19,26 @@ npm run dev
 
 Sem `INSTAGRAM_ACCESS_TOKEN`, o feed simplesmente não aparece.
 
+## Gerar ou renovar o token do Instagram
+
+O token vale ~60 dias. Para gerar (ou gerar de novo antes de vencer):
+
+1. Abra no navegador, logado como o Henrique no Instagram, e clique em **Permitir**:
+   `https://www.instagram.com/oauth/authorize?force_reauth=true&client_id=1941016390187674&redirect_uri=https://localhost/&response_type=code&scope=instagram_business_basic`
+2. A página seguinte dá erro (esperado). Copie o endereço inteiro da barra
+   (`https://localhost/?code=...`). O código vale pouco tempo e só funciona uma vez.
+3. Rode `node scripts/instagram-token.mjs` e informe, com digitação oculta, a
+   **chave secreta do app do Instagram** (painel da Meta > Casos de uso >
+   Configuração da API com login do Instagram > Mostrar) e o endereço copiado.
+
+O script troca o código por um token long-lived e grava em `.env.local`, sem
+imprimir nada sensível. O ID do app e a URL de redirecionamento podem ser
+trocados com `IG_APP_ID` e `IG_REDIRECT_URI`. A URL `https://localhost/` precisa
+estar cadastrada no painel (Configurar o login da empresa no Instagram).
+
+Por que não o botão "Gerar token" do painel: ele abre um pop-up que o navegador
+bloqueia com facilidade. Este caminho usa uma página normal.
+
 ## Publicação (GitHub Pages)
 
 O workflow `.github/workflows/pages.yml` gera um export estático
